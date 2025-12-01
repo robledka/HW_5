@@ -1,0 +1,12 @@
+---
+title: "HW_5"
+author: "Kalex Robledo"
+date: "2025-11-17"
+output: word_document
+---
+### Read in homocide dataset
+```{bash}
+library(dplyr)
+WApost_data <- read.csv("data/washington_post_homicides.csv")
+```
+
