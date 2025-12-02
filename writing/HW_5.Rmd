@@ -9,21 +9,15 @@ output: pdf_file
 ```{r}
 #Set working directory to project root
 setwd("~/R_Programming/HW_5")
+library(ggplot2)
 library(dplyr)
-library(readr)
+library(lubridate)
 wp_data <- read.csv("data/homicide-data.csv")
 head(wp_data)
-```
-
-
-# Choice 2
-```{r}
-#Filter to only include Baltimore 
-baltimore <- wp_data %>% filter(city == "Baltimore")
-
-head(baltimore) 
 
 ```
+
+---
 
 
 
