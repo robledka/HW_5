@@ -49,4 +49,37 @@ freddie_gray_date <- as.Date("2015-04-12")
 
 ---
 
+# Bar plot:
+```{r}
+baltimore_plot <- ggplot(baltimore_monthly, aes(x = month_date, y = n, fill = season)) +
+  geom_col(width = 25) +  # bars with fill for legend
+  scale_fill_manual(values = c("Summer" = "#969696", "Winter" = "#c7e9fb")) +  # flipped colors
+  geom_smooth(aes(group = 1), se = FALSE, color = "blue", size = 1.2,
+              method = "loess", span = 0.2) +  # tighter trend line
+  geom_vline(xintercept = as.numeric(freddie_gray_date),
+             color = "red", linetype = "dashed", size = 1.1) +
+  annotate("text",
+           x = freddie_gray_date + 120,
+           y = max(baltimore_monthly$n) * 0.95,
+           label = "Arrest of\nFreddie Gray",
+           color = "gray30",
+           hjust = 0,
+           size = 4) +
+  labs(
+ title = "Homicides in Baltimore, MD",
+    x = "Date",
+    y = "Monthly Homicides",
+    fill = "Season"  # legend title
+  ) +
+  theme_minimal(base_size = 14) +
+  theme(
+    legend.position = "bottom",         # move legend below x-axis
+    legend.title = element_text(size = 12),
+    legend.text = element_text(size = 11),
+    plot.margin = margin(20, 20, 20, 20)
+  )
+```
+
+---
+
 
