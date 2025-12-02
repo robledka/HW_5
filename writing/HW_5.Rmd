@@ -2,8 +2,11 @@
 title: "HW_5"
 author: "Kalex Robledo"
 date: "2025-11-17"
-output: pdf_file
+output:
+  pdf_document: default
+  df_document: default
 ---
+
 
 # Read in homicide dataset
 ```{r}
@@ -12,6 +15,8 @@ setwd("~/R_Programming/HW_5")
 library(ggplot2)
 library(dplyr)
 library(lubridate)
+# Set global chunk options
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
 wp_data <- read.csv("data/homicide-data.csv")
 head(wp_data)
 
@@ -19,7 +24,7 @@ head(wp_data)
 
 ---
 
-# Clean + Prep Baltimore
+# Clean + Prep to only include Baltimore observations
 ```{r}
 
 baltimore <- wp_data %>%
@@ -53,7 +58,7 @@ freddie_gray_date <- as.Date("2015-04-12")
 ```{r}
 baltimore_plot <- ggplot(baltimore_monthly, aes(x = month_date, y = n, fill = season)) +
   geom_col(width = 25) +  # bars with fill for legend
-  scale_fill_manual(values = c("Summer" = "#969696", "Winter" = "#c7e9fb")) +  # flipped colors
+  scale_fill_manual(values = c("Summer" = "#969696", "Winter" = "#c7e9fb")) + 
   geom_smooth(aes(group = 1), se = FALSE, color = "blue", size = 1.2,
               method = "loess", span = 0.2) +  # tighter trend line
   geom_vline(xintercept = as.numeric(freddie_gray_date),
@@ -84,7 +89,7 @@ baltimore_plot <- ggplot(baltimore_monthly, aes(x = month_date, y = n, fill = se
 
 # Save the figure
 ```{r}
-ggsave("../figures/baltimore_monthly_homicides.png",
+ggsave("figures/baltimore_monthly_homicides.png",
        baltimore_plot, width = 10, height = 4.5)
 
 baltimore_plot
@@ -92,16 +97,5 @@ baltimore_plot
 ```
 
 ---
-
-#install LaTeX 
-```{r}
-tinytex::install_tinytex()
-```
-
-
-#render rmarkdown to PDF and move to writing folder
-```{r}
-rmarkdown::render("writing/HW_5.Rmd", output_format = "pdf_document")
-```
 
 
