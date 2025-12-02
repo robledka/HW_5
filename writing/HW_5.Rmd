@@ -2,7 +2,7 @@
 title: "HW_5"
 author: "Kalex Robledo"
 date: "2025-11-17"
-output: word_document
+output: pdf_file
 ---
 
 # Read in homicide dataset
@@ -14,3 +14,18 @@ library(readr)
 wp_data <- read.csv("data/homicide-data.csv")
 head(wp_data)
 ```
+
+
+# Choice 2
+```{r}
+#Filter to only include Baltimore 
+baltimore <- wp_data %>% filter(city == "Baltimore")
+
+head(baltimore) 
+
+```
+
+
+
+
+
