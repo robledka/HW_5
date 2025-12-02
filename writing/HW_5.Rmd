@@ -99,5 +99,9 @@ tinytex::install_tinytex()
 ```
 
 
+#render rmarkdown to PDF and move to writing folder
+```{r}
+rmarkdown::render("writing/HW_5.Rmd", output_format = "pdf_document")
+```
 
 
