@@ -33,6 +33,20 @@ baltimore <- wp_data %>%
 
 ```
 
+---
 
+# Aggregate monthly counts
+```{r}
+
+baltimore_monthly <- baltimore %>%
+  mutate(month_date = floor_date(reported_date, "month")) %>%
+  group_by(month_date, season) %>%
+  summarise(n = n(), .groups = "drop")
+
+# Freddie Gray arrest date
+freddie_gray_date <- as.Date("2015-04-12")
+```
+
+---
 
 
