@@ -91,4 +91,5 @@ baltimore_plot
 
 ```
 
-
+tinytex::install_tinytex()
+rmarkdown::render("writing/HW_5.Rmd", output_format = "pdf_document")
