@@ -82,4 +82,13 @@ baltimore_plot <- ggplot(baltimore_monthly, aes(x = month_date, y = n, fill = se
 
 ---
 
+# Save the figure
+```{r}
+ggsave("../figures/baltimore_monthly_homicides.png",
+       baltimore_plot, width = 10, height = 4.5)
+
+baltimore_plot
+
+```
+
 
